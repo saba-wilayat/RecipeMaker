@@ -1,0 +1,45 @@
+<div><h1 class="CREATE-RECIPE"> Create Recipe</h1></div>
+<div>Pick your ingredients</div>
+<section *ngFor="let ing of ingredients; let i = index">
+    <div class="name">
+        <mat-checkbox 
+            class="example-margin"
+            [checked]="ing.checked"
+            color="primary"
+            (change)="checked(i,ing.checked)"
+        >
+            {{ing.name}}
+        </mat-checkbox>
+    </div>
+    <div *ngIf="ing.checked" id="ingredients_list">
+        <div id="brands">
+            <mat-form-field appearance="outline" >
+                <mat-label>Brands</mat-label>
+                <mat-select (selectionChange)="ing.brands = $event.value">
+                  <mat-option *ngFor="let type of types" [value]="type">
+                    {{type}}
+                  </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+        <div id="cookingtime">
+            <mat-form-field appearance="outline">
+                <mat-label>Cooking Time</mat-label>
+                <input type="number" matInput placeholder="minutes" [(ngModel)]="ing.cookingTime">
+            </mat-form-field>
+        </div>
+
+        <div id="cookingmethod">
+            <mat-form-field appearance="outline">
+                <mat-label>Cooking Method</mat-label>
+                <input matInput [(ngModel)]="ing.cookingMethod">
+            </mat-form-field>
+        </div>
+        
+    </div>
+</section>
+
+<div id="next-button">    
+    <button mat-raised-button color="primary" (click)="nextFunc()">Next</button>
+</div>
+

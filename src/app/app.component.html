@@ -1,0 +1,22 @@
+<mat-toolbar color="primary">
+  <button (click)="drawer.toggle()" mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+    <mat-icon>menu</mat-icon>
+  </button>
+  <span>Recipe</span>
+  <span class="example-spacer"></span>
+
+</mat-toolbar>
+
+<mat-drawer-container [hasBackdrop]="false" class="example-container" >
+  <mat-drawer #drawer [mode]="'side'" class="drawer">
+    <mat-list>
+      <mat-list-item routerLink="/intro"> Intro </mat-list-item>
+      <mat-list-item routerLink="/createRecipe"> Create Recipe </mat-list-item>
+    </mat-list>
+  </mat-drawer> 
+  <mat-drawer-content>
+    <router-outlet></router-outlet>
+  </mat-drawer-content>
+</mat-drawer-container>
+
+
